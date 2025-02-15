@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          First React app deployed on AWS Amplify
+          First React app deployed on Vercel
         </a>
       </header>
     </div>
