@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<h2>D3.js Scatter-Plot</h2>
+<svg id="myPlot" style="width: 500px; height: 500px"></svg>
+<script type="module">
+  import { d3 } from "./d3.js";
+  var w = 100;
+  var h = 100;
+  var barPadding = 2;
+
+  var dataset = [5, 10, 15, 20, 30];
+
+  var svg = d3.select("body").append("svg").attr("width", w).attr("height", h);
+  svg
+    .selectAll("rect")
+    .data(dataset)
+    .enter()
+    .append("rect")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", w)
+    .attr("height", h);
+</script>

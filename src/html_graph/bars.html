@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+  <title>Bar Chart</title>
+  <script src="https://d3js.org/d3.v7.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <script>
+    const w = 500;
+    const h = 300;
+    const padding = 10;
+    const titleText = "Simple Bar Chart";
+    const svg = d3
+      .select("body")
+      .append("svg")
+      .attr("width", w)
+      .attr("height", h)
+      .attr("style", "border:3px solid blue ")
+      .style("background-color", "AliceBlue");
+
+    svg.selectAll("text");
+    svg
+      .append("text")
+      .attr("class", "title")
+      .attr("transform", "translate(200,50)")
+      .text(titleText);
+
+    function colourChooser(d, i) {
+      if (d < 12) return "#666666";
+      return "#FF0033";
+    }
+
+    const dataSet = [3, 5, 8, 15, 6, 9, 1, 17];
+
+    // create svg rectangle shape inside parent svg
+    svg
+      .selectAll("rect")
+      .data(dataSet)
+      .enter()
+      .append("rect")
+      .attr("x", (d, i) => (i * w) / dataSet.length) //sets the x-coordinate the rect based on its index (i) in the data array (dataSet). It calculates the position by multiplying the index with the width of each element (w) divided by the total number of elements in the dataset.
+      .attr("y", (d) => h - d * 10) //sets the y-coordinate of he rect based on the data value (d). It calculates the position by subtracting the product of the data value and 5 from the total height (h).
+      .attr("width", w / dataSet.length - padding) // sets the width of an element. It calculates the width by dividing the total width (w) by the number of elements in the dataset and then subtracting a padding value.
+      .attr("height", (d, i) => d * 10) //sets the height of an element based on the data value (d). It calculates the height by multiplying the data value with 5.
+      .style("fill", function (d) {
+        return `rgb(${d * 50},${d * 10},${d * 20})`;
+      }); //ets the fill color of an element based on the data value (d). It generates an RGB color value using the data value to determine different levels of red, green, and blue components in the color.
+    console.log(dataSet);
+  </script>
+  <!-- Attach footer-->
+</body>
